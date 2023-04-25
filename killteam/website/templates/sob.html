@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <h1> Sisters Of Battle </h1> <br/>
+    {% for item in all %}
+        <h3> {{ item }} </h3>
+        Move: {{ item.m }}  APL: {{ item.apl }}  GA: {{ item.ga }}  DF: {{ item.df }} SV: {{ item.sv }}  W: {{ item.w }} <br/>
+        <br/>
+    {% endfor %}
+
+{%endblock%}
