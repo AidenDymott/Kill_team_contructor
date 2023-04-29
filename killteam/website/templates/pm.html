@@ -1,12 +1,13 @@
 {%extends 'base.html'%}
 
 {%block content%}
-    <h1> Sisters Of Battle </h1> <br/>
+    <h1> Primaris Marines </h1> <br/>
 
-    <form method = "POST" action="{% url 'sister' %}">
+    <form method = "POST" action="{% url 'pm' %}">
         {% csrf_token %}
 
-        {{ s_form }}
+        {{ p_form }}
+
     </br>
         <button type="submit" class="btn btn-dark">Save</button>
     </form>

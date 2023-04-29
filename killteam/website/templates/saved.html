@@ -2,7 +2,26 @@
 
 {%block content%}
 
-{% for item in all%}
+<!-- ORK -->
+{% for item in ork %}
+    {{item.name}}
+
+{% endfor %}
+
+<!-- SISTER-->
+{% for item in sob %}
+    {{item.name}}
+
+{% endfor %}
+
+<!-- PRIMARIS MARINES -->
+{% for item in pm %}
+    {{item.name}}
+
+{% endfor %}
+
+<!-- KRIEG -->
+{% for item in krieg %}
     {{item.name}}
 
 {% endfor %}

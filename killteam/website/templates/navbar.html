@@ -24,12 +24,12 @@
 
           {% if user.is_authenticated %}
 
-          <li class="nav-item navbar-right">
-            <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
-          </li>
-
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'saved' %}">Saved Lists</a>
+          </li>
+
+          <li class="nav-item navbar-right">
+            <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
           </li>
 
           {% else %}
