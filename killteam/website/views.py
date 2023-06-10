@@ -20,13 +20,15 @@ def saved(request):
     sob = sister_list.objects.all()
     pm = Pm_list.objects.all()
     krieg = Krieg_list.objects.all()
-    death = Dg_list.objects,all()
+    death = Dg_list.objects.all()
     cm = Cm_list.objects.all()
     blood = Bloodied_list.objects.all()
     edar = Eldarg_list.objects.all()
     ptau = Pathfinder_list.objects.all()
     swarm = Tyranid_list.objects.all()
     return render(request, 'saved.html', {'ork':ork, 'sob':sob, 'pm':pm, 'krieg':krieg, 'death':death, 'cm':cm, 'blood':blood, 'edar':edar, 'ptau':ptau, 'swarm':swarm})
+
+
 
 #LOGIN/LOGOUT
 def login_user(request):
@@ -87,6 +89,20 @@ def ork(request):
             return render(request, 'ork.html',{'o_form':o_form})
   
     return render(request, 'ork.html', {'o_form':o_form})
+
+def update_ork(request, list_id):
+    o_list = Kommand_list.objects.get(pk=list_id)
+    o_form = kommando_form(request.POST or None, instance=list_id)
+    if o_form.is_valid():
+        o_form.save()
+        return redirect('saved')
+    return render(request, 'update_ork.html', {'o_form':o_form ,'o_list':o_list})
+    
+def delete_ork(request, list_id):
+    list = Kommand_list.objects.get(pk=list_id)
+    list.delete()
+    return redirect('saved')
+    
 
 #SWARM   
 def swarm(request):
@@ -185,6 +201,15 @@ def sister(request):
             return render(request, 'sob.html')
     
     return render(request, 'sob.html', {'s_form':s_form})
+
+def update_sister(request, list_id):
+    s_list = sister_list.objects.get(pk=list_id)
+    s_form = sister_form(request.POST or None, instance=list_id)
+    if s_form.is_valid():
+        s_form.save()
+        return render('saved')
+    return render(request, 'saved.html', {'s_list':s_list,'s_form':s_form})
+    
 
 #PM
 def pm(request):

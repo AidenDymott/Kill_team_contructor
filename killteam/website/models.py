@@ -64,7 +64,7 @@ class Kommand_list(models.Model):
     unit10 = models.ForeignKey(Kommando, on_delete=models.DO_NOTHING, blank=True, null=True, related_name='unit10')
    
     def __str__(self):
-        return self.name
+        return str(self.name)
     
 #SWARM  
 class Tyranid_s(models.Model):

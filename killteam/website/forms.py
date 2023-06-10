@@ -74,7 +74,7 @@ class swarm_form(ModelForm):
 class guardian_form(ModelForm):
     class Meta:
         model = Eldarg_list
-        name = forms.CharField(max_length=100)       
+  
         fields = ('name', 'unit01', 'unit02', 'unit03', 'unit04', 'unit05', 'unit06', 'unit07', 'unit08', 'unit09', 'unit10',)
     
     def __init__(self, *args, **kwargs):
@@ -96,12 +96,11 @@ class guardian_form(ModelForm):
 #SISTERS OF BATTLE       
 class sister_form(ModelForm):
     class Meta:
-        model = sister_list
-        name = forms.CharField(max_length=100)       
-        fields = ('name', 'unit01', 'unit02', 'unit03', 'unit04', 'unit05', 'unit06', 'unit07', 'unit08', 'unit09', 'unit10',)
-    
+        model = sister_list     
+        fields = ('name', 'unit01', 'unit02', 'unit03', 'unit04', 'unit05', 'unit06', 'unit07', 'unit08', 'unit09', 'unit10',)    
     def __init__(self, *args, **kwargs):
         super(sister_form, self).__init__(*args, **kwargs)
+        
         self.fields['name'].widget.attrs['class'] = 'form-control'
         self.fields['unit01'].widget.attrs['class'] = 'form-control'
         self.fields['unit02'].widget.attrs['class'] = 'form-control'
