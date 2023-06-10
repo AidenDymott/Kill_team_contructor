@@ -1,0 +1,16 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <h1> Sisters Of Battle </h1> <br/>
+
+    <form method = "POST" action="{% url 'sister' %}">
+        {% csrf_token %}
+
+        {{ s_form }}
+    </br>
+        <button type="submit" class="btn btn-dark">Save</button>
+    </form>
+            
+    
+
+{%endblock%}

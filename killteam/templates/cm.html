@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <h1> Chaos Space Marines </h1> </br></br>
+
+    <form method = "POST" action="{% url 'cm' %}">
+        {% csrf_token %}
+
+        {{ c_form }}
+        
+    </br>
+        <button type="submit" class="btn btn-dark">Save</button>
+    </form>
+            
+{%endblock%}

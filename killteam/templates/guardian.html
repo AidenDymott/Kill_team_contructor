@@ -1,0 +1,17 @@
+{%extends 'base.html'%}
+
+{%block content%}
+    <h1> Craftworld Guardians </h1> <br/>
+
+    <form method = "POST" action="{% url 'guardian' %}">
+        {% csrf_token %}
+
+        {{ ge_form }}
+
+    </br>
+        <button type="submit" class="btn btn-dark">Save</button>
+    </form>
+            
+    
+
+{%endblock%}

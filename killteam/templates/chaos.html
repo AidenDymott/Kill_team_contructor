@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<!-- CHAOS ROW 1 -->
+{% for item in cm %}
+  <div class = 'row'>
+    <div class="col">
+      <div class="card" style="width: 25rem;">
+          <img class="card-img-top" src=" {{ item.image.url }}">
+          <div class="card-body">
+            <h5 class="card-title"> {{ item.Fac_name }}</h5>
+            <p class="card-text"> {{ item.Fac_rule }} </p>
+            <a href="{% url 'cm'%}" class="btn btn-dark">Build Team</a>
+          </div>
+        </div>
+      </div>
+     
+{% endfor %}
+
+<!--Bloodied-->
+{% for item in blood %}
+    <div class="col">
+      <div class="card" style="width: 25rem;">
+          <img class="card-img-top" src=" {{ item.image.url }}">
+          <div class="card-body">
+            <h5 class="card-title"> {{ item.Fac_name }}</h5>
+            <p class="card-text"> {{ item.Fac_rule }} </p>
+            <a href="{% url 'bloodied'%}" class="btn btn-dark">Build Team</a>
+          </div>
+        </div>
+      </div>
+{% endfor %}
+
+<!--DEATH GUARD-->
+{% for item in dg %}
+    <div class="col">
+      <div class="card" style="width: 25rem;">
+          <img class="card-img-top" src=" {{ item.image.url }}">
+          <div class="card-body">
+            <h5 class="card-title"> {{ item.Fac_name }}</h5>
+            <p class="card-text"> {{ item.Fac_rule }} </p>
+            <a href="{% url 'dg'%}" class="btn btn-dark">Build Team</a>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+
+  
+{%endblock%}
