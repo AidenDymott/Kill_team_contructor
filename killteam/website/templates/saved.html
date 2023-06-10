@@ -44,5 +44,65 @@
             {% endfor %}
         </td>
     </tr>
+<!-- Bloodied -->
+    <tr>
+        <td>
+            <strong>Bloodied</br>
+            {% for item in blood %}
+                <a href="{% url 'update-bloodied' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
+            {% endfor %}
+        </td>
+
+    </tr>
+<!--CHAOS MARINES-->
+    <tr>
+        <td>
+            <strong>Chaos Marines</br>
+            {% for item in cm %}
+                <a href="{% url 'update-cm' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
+            {% endfor %}
+        </td>
+
+    </tr>
+<!--DEATHGUARD-->
+    <tr>
+        <td>
+            <strong>Death Guard</br>
+            {% for item in death %}
+                <a href="{% url 'update-dg' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
+            {% endfor %}
+        </td>
+    </tr>
+
+<!--GUARDIANS-->
+<tr>
+    <td>
+        <strong>Eldar Guardians</br>
+        {% for item in edar %}
+            <a href="{% url 'update-dg' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
+        {% endfor %}
+    </td>
+</tr>
+
+<!--TAU-->
+<tr>
+    <td>
+        <strong>Tau Pathfinders</br>
+        {% for item in ptau %}
+            <a href="{% url 'update-tau' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
+        {% endfor %}
+    </td>
+</tr>
+
+<!--Swarm-->
+<tr>
+    <td>
+        <strong>Tyranid Swarm</br>
+        {% for item in swarm %}
+            <a href="{% url 'update-swarm' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
+        {% endfor %}
+    </td>
+</tr>
+
 </table>
 {%endblock%}
