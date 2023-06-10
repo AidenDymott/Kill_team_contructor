@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Member, Home_media, Kommando, Krieg, Sister, Xeno, Imperium, Chao, Kommand_list, sister_list, Krieg_list, Pm_list, Cm_list, Bloodied_list, Dg_list, Eldarg_list, Pathfinder_list, Tyranid_list
-from .forms import CreateUserForm, kommando_form, sister_form, krieg_form, pm_form, swarm_form, guardian_form, cm_form, dg_form, blood_form
+from .models import Member, Home_media, Kommando, Krieg, Sister, Xeno, Imperium, Chao, Kommand_list, sister_list, Krieg_list, Pm_list, Cm_list, Bloodied_list, Dg_list, Eldarg_list, Pathfinder_list, Tyranid_list, Tau_p
+from .forms import CreateUserForm, kommando_form, sister_form, krieg_form, pm_form, swarm_form, guardian_form, cm_form, dg_form, blood_form, tau_form
 from django.http import HttpResponseRedirect, FileResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -26,7 +26,8 @@ def saved(request):
     edar = Eldarg_list.objects.all()
     ptau = Pathfinder_list.objects.all()
     swarm = Tyranid_list.objects.all()
-    return render(request, 'saved.html', {'ork':ork, 'sob':sob, 'pm':pm, 'krieg':krieg, 'death':death, 'cm':cm, 'blood':blood, 'edar':edar, 'ptau':ptau, 'swarm':swarm})
+    ptau = Pathfinder_list.objects.all()
+    return render(request, 'saved.html', {'ork':ork, 'sob':sob, 'pm':pm, 'krieg':krieg, 'death':death, 'cm':cm, 'blood':blood, 'edar':edar, 'ptau':ptau, 'swarm':swarm, 'ptau':ptau})
 
 
 
@@ -118,6 +119,15 @@ def swarm(request):
   
     return render(request, 'swarm.html', {'ts_form':ts_form})
 
+def update_swarm(request, list_id):
+    list = Tyranid_list.objects.get(pk=list_id)
+    form = swarm_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_swarm.html', {'list':list,'form':form})
+
+
 #Eldar G 
 def guardian(request):
     ge_form = guardian_form
@@ -131,6 +141,38 @@ def guardian(request):
             return render(request, 'guardian.html',{'ge_form':ge_form})
   
     return render(request, 'guardian.html', {'ge_form':ge_form})
+
+def update_guardian(request, list_id):
+    list = Eldarg_list.objects.get(pk=list_id)
+    form = guardian_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_guardian.html', {'list':list,'form':form})
+
+#PATHFINDERS
+def ptau(request):
+    form = tau_form
+    if request.method == "POST":
+        form = tau_form(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'ptau.html', {'form':form})
+        else:
+            ge_form = guardian_form
+            return render(request, 'ptau.html',{'form':form})
+  
+    return render(request, 'ptau.html', {'form':form})
+
+def update_tau(request, list_id):
+    list = Pathfinder_list.objects.get(pk=list_id)
+    form = tau_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_tau.html', {'list':list,'form':form})
+    
+
 
 #CHAOS
 def chaos(request):
@@ -153,6 +195,14 @@ def cm(request):
     
     return render(request, 'cm.html', {'c_form':c_form})
 
+def update_cm(request, list_id):
+    list = Cm_list.objects.get(pk=list_id)
+    form = cm_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_cm.html', {'list':list,'form':form})
+
 #DEATHGUARD
 def dg(request):
     d_form = dg_form
@@ -162,10 +212,18 @@ def dg(request):
             d_form.save()
             return render(request, 'dg.html', {'d_form':d_form})
         else:
-            c_form = cm_form
+            form = dg_form
             return render(request, 'dg.html')
     
     return render(request, 'dg.html', {'d_form':d_form})
+
+def update_dg(request, list_id):
+    list = Dg_list.objects.get(pk=list_id)
+    form = dg_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_dg.html', {'list':list,'form':form})
 
 #BLOODIED
 def bloodied(request):
@@ -176,10 +234,18 @@ def bloodied(request):
             b_form.save()
             return render(request, 'bloodied.html', {'b_form':b_form})
         else:
-            c_form = cm_form
+            b_form = blood_form
             return render(request, 'bloodied.html')
     
     return render(request, 'bloodied.html', {'b_form':b_form})
+
+def update_bloodied(request, list_id):
+    list = Bloodied_list.objects.get(pk=list_id)
+    form = blood_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_pm.html', {'list':list,'form':form})
 
 #IMPERIUM
 def imperium(request):

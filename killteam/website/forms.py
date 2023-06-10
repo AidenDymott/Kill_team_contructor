@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms 
 from django.forms import ModelForm
-from .models import Kommand_list, sister_list, Krieg_list, Pm_list, Tyranid_list, Eldarg_list, Cm_list, Bloodied_list, Dg_list
+from .models import Kommand_list, sister_list, Krieg_list, Pm_list, Tyranid_list, Eldarg_list, Cm_list, Bloodied_list, Dg_list, Pathfinder_list
 
 
 class CreateUserForm(UserCreationForm):
@@ -90,6 +90,30 @@ class guardian_form(ModelForm):
         self.fields['unit08'].widget.attrs['class'] = 'form-control'
         self.fields['unit09'].widget.attrs['class'] = 'form-control'
         self.fields['unit10'].widget.attrs['class'] = 'form-control'
+        
+#TAU
+class tau_form(ModelForm):
+    class Meta:
+        model = Pathfinder_list
+        name = forms.CharField(max_length=100)       
+        fields = ('name', 'unit01', 'unit02', 'unit03', 'unit04', 'unit05', 'unit06', 'unit07', 'unit08', 'unit09', 'unit10', 'unit11', 'unit12')
+    
+    def __init__(self, *args, **kwargs):
+        super(tau_form, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs['class'] = 'form-control'
+        self.fields['unit01'].widget.attrs['class'] = 'form-control'
+        self.fields['unit02'].widget.attrs['class'] = 'form-control'
+        self.fields['unit03'].widget.attrs['class'] = 'form-control'
+        self.fields['unit04'].widget.attrs['class'] = 'form-control'
+        self.fields['unit05'].widget.attrs['class'] = 'form-control'
+        self.fields['unit06'].widget.attrs['class'] = 'form-control'
+        self.fields['unit07'].widget.attrs['class'] = 'form-control'
+        self.fields['unit08'].widget.attrs['class'] = 'form-control'
+        self.fields['unit09'].widget.attrs['class'] = 'form-control'
+        self.fields['unit10'].widget.attrs['class'] = 'form-control'
+        self.fields['unit11'].widget.attrs['class'] = 'form-control'
+        self.fields['unit12'].widget.attrs['class'] = 'form-control'
+
 
 #IMPERIUN FORMS
 
