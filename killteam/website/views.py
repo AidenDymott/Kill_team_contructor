@@ -92,11 +92,11 @@ def ork(request):
 
 def update_ork(request, list_id):
     o_list = Kommand_list.objects.get(pk=list_id)
-    o_form = kommando_form(request.POST or None, instance=list_id)
-    if o_form.is_valid():
-        o_form.save()
+    form = kommando_form(request.POST or None, instance = o_list )
+    if form.is_valid():
+        form.save()
         return redirect('saved')
-    return render(request, 'update_ork.html', {'o_form':o_form ,'o_list':o_list})
+    return render(request, 'update_ork.html', {'o_list':o_list, 'form':form})
     
 def delete_ork(request, list_id):
     list = Kommand_list.objects.get(pk=list_id)
@@ -204,11 +204,11 @@ def sister(request):
 
 def update_sister(request, list_id):
     s_list = sister_list.objects.get(pk=list_id)
-    s_form = sister_form(request.POST or None, instance=list_id)
+    s_form = sister_form(request.POST or None, instance=s_list)
     if s_form.is_valid():
         s_form.save()
-        return render('saved')
-    return render(request, 'saved.html', {'s_list':s_list,'s_form':s_form})
+        return redirect('saved')
+    return render(request, 'update_sister.html', {'s_list':s_list,'s_form':s_form})
     
 
 #PM
@@ -224,6 +224,15 @@ def pm(request):
             return render(request, 'pm.html')
     
     return render(request, 'pm.html', {'p_form':p_form})
+
+def update_pm(request, list_id):
+    list = Pm_list.objects.get(pk=list_id)
+    form = pm_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_pm.html', {'list':list,'form':form})
+
 #KRIEG
 def krieg(request):
     k_form = krieg_form
@@ -231,12 +240,20 @@ def krieg(request):
         k_form = krieg_form(request.POST)
         if k_form.is_valid():
             k_form.save()
-            return render(request, 'kreig.html', {'k_form':k_form})
+            return render(request, 'krieg.html', {'k_form':k_form})
         else:
             k_form = krieg_form
             return render(request, 'krieg.html')
         
     return render(request, 'krieg.html', {'k_form':k_form})
+
+def update_krieg(request, list_id):
+    list = Krieg_list.objects.get(pk=list_id)
+    form = krieg_form(request.POST or None, instance=list)
+    if form.is_valid():
+        form.save()
+        return redirect('saved')
+    return render(request, 'update_krieg.html', {'list':list,'form':form})
 
 
 

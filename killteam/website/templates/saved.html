@@ -9,9 +9,10 @@
         <!-- ORK -->
             <strong>ORK Kommandos<br/>
             {% for item in ork %}
-            <div class = 'row'>
-                <a href="{% url 'update-ork' item.id %}"> {{item.name}}</a><br/>
-            {% endfor %}
+    
+                <a href="{% url 'update-ork' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
+                <!-- <td><a href="{% url 'delete-ork' item.id %}" class="btn btn-outline-danger btn-sm"> Delete</a></td><br/> -->
+            {% endfor %} 
 
         </td>
     </tr>
@@ -20,7 +21,7 @@
         <td>
             <strong>Sisters Of Battle<br/>
             {% for item in sob %}
-                <a href="{% url 'update-sister' item.id%}"> {{item.name}}</a><br/>
+                <a href="{% url 'update-sister' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
             {% endfor %}
         </td>
     </tr>
@@ -30,7 +31,7 @@
         <td>
             <strong>Intercessor Marines<br/>
             {% for item in pm %}
-                <a href=""> {{item.name}}</a><br/>
+                <a href="{% url 'update-pm' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
             {% endfor %}
         </td>
     </tr>
@@ -39,7 +40,7 @@
         <td>
             <strong>Veteran Guardsman<br/>
             {% for item in krieg %}
-                <a href=""> {{item.name}}</a><br/>
+                <a href="{% url 'update-krieg' item.id %}" class="btn btn-outline-secondary btn-sm"> {{item.name}}</a><br/>
             {% endfor %}
         </td>
     </tr>
