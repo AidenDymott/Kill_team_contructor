@@ -176,7 +176,7 @@ def update_tau(request, list_id):
 
 #CHAOS
 def chaos(request):
-    cm = Chao.objects.filter(Fac_name = 'Chaos')
+    cm = Chao.objects.filter(Fac_name = 'Chaos Legionary')
     blood = Chao.objects.filter(Fac_name = 'Bloodied')
     dg = Chao.objects.filter(Fac_name = 'Death Guard')
     return render(request, 'chaos.html', {'cm':cm, 'blood':blood, 'dg':dg})
@@ -321,6 +321,19 @@ def update_krieg(request, list_id):
         return redirect('saved')
     return render(request, 'update_krieg.html', {'list':list,'form':form})
 
+
+# TAC OPS VIEWS
+def infiltration(request):
+    return render(request, 'infiltration.html', {})
+
+def security(request):
+    return render(request, 'security.html', {})
+
+def seek(request):
+    return render(request, 'seek.html', {})
+
+def recon(request):
+    return render(request, 'recon.html', {})
 
 
 

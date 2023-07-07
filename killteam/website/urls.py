@@ -59,4 +59,10 @@ urlpatterns = [
    # BLOODIED
    path('bloodied', views.bloodied, name='bloodied'),
    path('update_bloodied/<list_id>', views.update_bloodied, name='update-bloodied'),
+   
+   # TAC OPS
+   path('infiltration', views.infiltration, name='infiltration'),
+   path('security', views.security, name="security"),
+   path('seek', views.seek, name='seek'),
+   path('recon', views.recon, name='recon'),
 ]
